@@ -29,58 +29,58 @@ const Contact = () => {
 
 
   //handleSubmit
-  const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+//   const handleSubmit = (e: React.FormEvent) => {
+//   e.preventDefault();
+//   setIsSubmitting(true);
 
-  // Show "Available Soon" popup
-  alert("Available Soon!");
+//   // Show "Available Soon" popup
+//   alert("Available Soon!");
 
-  // Optional: Reset submitting state immediately
-  setIsSubmitting(false);
+//   // Optional: Reset submitting state immediately
+//   setIsSubmitting(false);
 
-  // Optional: Reset form fields if needed
-  setFormData({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    service: '',
-    message: ''
-  });
-};
+//   // Optional: Reset form fields if needed
+//   setFormData({
+//     name: '',
+//     email: '',
+//     phone: '',
+//     company: '',
+//     service: '',
+//     message: ''
+//   });
+// };
 
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  //   try {
-  //     const res = await axios.post(`${import.meta.env.VITE_API_URL}/contact`, formData);
+    try {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/contact`, formData);
 
-  //     if (res.data.success) {
-  //       setIsSubmitted(true);
+      if (res.data.success) {
+        setIsSubmitted(true);
 
-  //       // Reset form after 3 seconds
-  //       setTimeout(() => {
-  //         setIsSubmitted(false);
-  //         setFormData({
-  //           name: '',
-  //           email: '',
-  //           phone: '',
-  //           company: '',
-  //           service: '',
-  //           message: ''
-  //         });
-  //       }, 3000);
-  //     }
-  //   } catch (error: any) {
-  //     console.error("Error submitting form:", error.response?.data || error.message);
-  //     alert("Something went wrong. Please try again.");
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            service: '',
+            message: ''
+          });
+        }, 3000);
+      }
+    } catch (error: any) {
+      console.error("Error submitting form:", error.response?.data || error.message);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
 
 

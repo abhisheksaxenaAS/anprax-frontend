@@ -33,15 +33,15 @@ const Footer = () => {
   ];
 
   const services = [
-    'Web Development',
-    'Mobile App Development',
-    'Digital Marketing',
-    'SEO & SEM',
-    'UI/UX Design',
-    'Cloud Solutions',
-    'E-commerce Development',
-    'Consulting Services',
-  ];
+     "Software Development Services",
+    "IT Outsourcing Services",
+    "Software Consulting Services",
+    "Creative & Branding Solutions",
+    "ERP/CRM Solutions",
+    "RPO Services",
+    "Other"
+];
+
 
   const socialLinks = [
     { icon: Facebook, href: '', label: 'Facebook' },
