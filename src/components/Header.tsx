@@ -41,10 +41,10 @@ const Header = () => {
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
 
-    // Calculate offset (height of your fixed header + top bar)
-    const topBarHeight = 40; // height of your top contact bar
-    const mainHeaderHeight = 64; // height of your main header (h-16 = 64px)
-    const totalOffset = topBarHeight + mainHeaderHeight + 20; // +20 for extra breathing room
+    // Calculate offset (height of top bar + main header)
+    const topBarHeight = 40;
+    const mainHeaderHeight = 64;
+    const totalOffset = topBarHeight + mainHeaderHeight + 20;
 
     setTimeout(() => {
       const element = document.querySelector(href);
@@ -54,8 +54,11 @@ const Header = () => {
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
+      } else if (href === '#home') {
+        // If #home doesn't exist, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }, 100);
   };
@@ -96,7 +99,11 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-2 cursor-pointer"
+              onClick={() => handleNavClick('#home')}
+            >
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <img
                   src="/favicon96.png"
@@ -165,7 +172,11 @@ const Header = () => {
               className="md:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6 text-foreground" /> : <Menu className="h-6 w-6 text-foreground" />}
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6 text-foreground" />
+              ) : (
+                <Menu className="h-6 w-6 text-foreground" />
+              )}
             </button>
           </div>
         </div>
