@@ -10,8 +10,9 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import Team from '@/components/Teams';
 import Careers from '@/components/Careers';
-import ServicesSection from '@/components/ServicesSection';
 import { Helmet } from "react-helmet-async"
+import CurrentOpenings from '@/components/CurrentOpenings';
+import ServiceSection from '@/components/CurrentOpenings';
 
 
 
@@ -72,13 +73,14 @@ const Index = () => {
           <Hero />
           <ClientLogos />
           <About />
-          <ServicesSection />
+          <CurrentOpenings />
           <Services />
           <Team />
-          <Careers />
           <Portfolio />
           <Testimonials />
+          <Careers />
           <Contact />
+
         </main>
         <Footer />
       </div>

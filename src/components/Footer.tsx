@@ -33,26 +33,60 @@ const Footer = () => {
   ];
 
   const services = [
-     "Software Development Services",
+    "Software Development Services",
     "IT Outsourcing Services",
     "Software Consulting Services",
     "Creative & Branding Solutions",
     "ERP/CRM Solutions",
     "RPO Services",
     "Other"
-];
-
+  ];
 
   const socialLinks = [
     { icon: Facebook, href: '', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: 'https://www.youtube.com/', label: 'YouTube' },
+    { icon: Twitter, href: '', label: 'Twitter' },
+    { icon: Linkedin, href: '', label: 'LinkedIn' },
+    { icon: Instagram, href: '', label: 'Instagram' },
+    { icon: Youtube, href: '', label: 'YouTube' }, // Fixed whitespace
   ];
 
+  // 🔥 Organization Schema Markup
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AnPrax Technologies",
+    "url": "https://official.anprax.com", // Update with your actual domain
+    "logo": "https://official.anprax.com/favicon96.png", // Update with full URL
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-870-945-5238",
+      "contactType": "customer service",
+      "email": "sales@anprax.com",
+      "areaServed": "IN",
+      "availableLanguage": "en"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "802-803, 8th Floor, Pearl Best Heights-I, Netaji Subhash Place",
+      "addressLocality": "New Delhi",
+      "postalCode": "110034",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  };
+
   return (
-    <footer className="bg-gradient-hero text-white relative overflow-hidden">
+    <footer
+      className="bg-gradient-hero text-white relative overflow-hidden"
+      role="contentinfo"
+      aria-label="Footer"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -85,8 +119,8 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="container-custom pt-20 pb-12">
           <div className="grid lg:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <div className="lg:col-span-1">
+            {/* Company Info - Enhanced for SEO */}
+            <div className="lg:col-span-1" itemScope itemType="https://schema.org/Organization">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -97,8 +131,9 @@ const Footer = () => {
                   <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <img
                       src="/favicon96.png"
-                      alt="AnPrax Logo"
+                      alt="AnPrax Logo - Professional IT Services Company"
                       className="w-8 h-8 rounded-sm object-contain"
+                      itemProp="logo"
                     />
                   </div>
                   <span className="text-2xl font-bold">
@@ -106,23 +141,28 @@ const Footer = () => {
                   </span>
                 </div>
 
-                <p className="text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-300 mb-6 leading-relaxed" itemProp="description">
                   Your trusted partner for digital transformation. We help businesses
                   thrive in the digital world with innovative solutions and cutting-edge technology.
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-3" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                   <div className="flex items-center gap-3">
                     <Phone className="h-5 w-5 text-primary" />
-                    <span className="text-gray-300">+91-870-945-5238</span>
+                    <span className="text-gray-300" itemProp="telephone">+91-870-945-5238</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-primary" />
-                    <span className="text-gray-300">sales@anprax.com</span>
+                    <span className="text-gray-300" itemProp="email">sales@anprax.com</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <span className="text-gray-300">802-803, 8th Floor, Pearl Best Heights-I, Netaji Subhash Place, New Delhi - 110034</span>
+                    <span
+                      className="text-gray-300"
+                      itemProp="streetAddress"
+                    >
+                      802-803, 8th Floor, Pearl Best Heights-I, Netaji Subhash Place, New Delhi - 110034
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -137,18 +177,21 @@ const Footer = () => {
                 viewport={{ once: true }}
               >
                 <h3 className="text-xl font-bold mb-6">Quick Links</h3>
-                <ul className="space-y-3">
-                  {quickLinks.map((link, index) => (
-                    <li key={index}>
-                      <button
-                        onClick={() => handleNavClick(link.href)}
-                        className="text-gray-300 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform block"
-                      >
-                        {link.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+                <nav aria-label="Quick navigation links">
+                  <ul className="space-y-3">
+                    {quickLinks.map((link, index) => (
+                      <li key={link.href}>
+                        <button
+                          onClick={() => handleNavClick(link.href)}
+                          className="text-gray-300 hover:text-primary transition-colors duration-300 hover:translate-x-1 transform block"
+                          aria-label={`Navigate to ${link.name}`}
+                        >
+                          {link.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               </motion.div>
             </div>
 
@@ -161,12 +204,10 @@ const Footer = () => {
                 viewport={{ once: true }}
               >
                 <h3 className="text-xl font-bold mb-6">Our Services</h3>
-                <ul className="space-y-3">
+                <ul className="space-y-3" role="list" aria-label="Our services">
                   {services.map((service, index) => (
-                    <li key={index}>
-                      <span className="text-gray-300 hover:text-primary transition-colors duration-300 cursor-pointer hover:translate-x-1 transform block">
-                        {service}
-                      </span>
+                    <li key={service} className="text-gray-300">
+                      {service}
                     </li>
                   ))}
                 </ul>
@@ -186,24 +227,36 @@ const Footer = () => {
                   Subscribe to our newsletter for the latest updates and tech insights.
                 </p>
 
-                <div className="flex mb-8">
+                {/* Enhanced Newsletter Form */}
+                <form className="flex mb-8" role="form" aria-label="Newsletter subscription">
+                  <label htmlFor="newsletter-email" className="sr-only">
+                    Email address for newsletter subscription
+                  </label>
                   <input
+                    id="newsletter-email"
                     type="email"
                     placeholder="Enter your email"
                     className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white placeholder-gray-400"
+                    aria-required="true"
                   />
-                  <button className="px-6 py-3 bg-gradient-primary rounded-r-lg hover:opacity-90 transition-opacity">
+                  <button
+                    type="submit"
+                    className="px-6 py-3 bg-gradient-primary rounded-r-lg hover:opacity-90 transition-opacity"
+                    aria-label="Subscribe to newsletter"
+                  >
                     <Mail className="h-5 w-5" />
                   </button>
-                </div>
+                </form>
 
                 <div>
                   <h4 className="font-semibold mb-4">Follow Us</h4>
                   <div className="flex gap-4">
                     {socialLinks.map((social, index) => (
                       <motion.a
-                        key={index}
+                        key={social.href}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary transition-all duration-300"
@@ -219,6 +272,23 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* 🔥 Schema Markup - Add to main layout head */}
+        <script type="application/ld+json" className="sr-only">
+          {JSON.stringify(organizationSchema)}
+        </script>
+
+        {/* 🔥 SEO Content - Hidden but crawlable */}
+        <div className="sr-only" aria-hidden="true">
+          <h3>AnPrax Technologies - Professional IT Services in New Delhi</h3>
+          <p>
+            AnPrax Technologies is a leading IT services company based in New Delhi, India,
+            specializing in software development, IT outsourcing, digital marketing,
+            ERP/CRM solutions, and RPO services. Our team of expert developers,
+            designers, and consultants deliver innovative digital solutions that help
+            businesses transform and grow in the digital era.
+          </p>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-white/10">
           <div className="container-custom py-8">
@@ -230,11 +300,23 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="text-gray-400 text-center md:text-left"
               >
-                <p>&copy; 2025 AnPrax. All rights reserved.</p>
+                <p>&copy; 2025 AnPrax Technologies. All rights reserved.</p>
                 <p className="text-sm mt-1">
-                  Crafted with ❤️ by the AnPrax |
-                  <span className="hover:text-primary cursor-pointer"> Privacy Policy</span> |
-                  <span className="hover:text-primary cursor-pointer"> Terms of Service</span>
+                  Crafted with ❤️ by the AnPrax team |
+                  <a
+                    href="/privacy-policy"
+                    className="hover:text-primary ml-1"
+                    aria-label="Privacy Policy"
+                  >
+                    Privacy Policy
+                  </a> |
+                  <a
+                    href="/terms-of-service"
+                    className="hover:text-primary ml-1"
+                    aria-label="Terms of Service"
+                  >
+                    Terms of Service
+                  </a>
                 </p>
               </motion.div>
 

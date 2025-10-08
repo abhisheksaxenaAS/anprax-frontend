@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, Github, X } from 'lucide-react';
+import { ExternalLink, Github, X, Layers, Award, TrendingUp } from 'lucide-react';
 
 const ProjectModal = ({ project, isOpen, onClose }: { project: any, isOpen: boolean, onClose: () => void }) => {
       if (!isOpen) return null;
@@ -13,6 +13,9 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: any, isOpen: bool
                   exit={{ opacity: 0 }}
                   className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                   onClick={onClose}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby={`modal-title-${project.title.replace(/\s+/g, '-')}`}
             >
                   <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
@@ -23,20 +26,28 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: any, isOpen: bool
                   >
                         <div className="relative">
                               <img
-                                    src={project.image}
-                                    alt={project.title}
+                                    src={project.image.trim()} // Fixed whitespace
+                                    alt={`${project.title} - ${project.description}`}
                                     className="w-full h-64 object-cover rounded-t-2xl"
+                                    loading="lazy"
+                                    decoding="async"
                               />
                               <button
                                     onClick={onClose}
                                     className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+                                    aria-label="Close project details"
                               >
                                     <X className="h-6 w-6" />
                               </button>
                         </div>
 
                         <div className="p-8">
-                              <h3 className="text-3xl font-bold text-foreground mb-4">{project.title}</h3>
+                              <h3
+                                    id={`modal-title-${project.title.replace(/\s+/g, '-')}`}
+                                    className="text-3xl font-bold text-foreground mb-4"
+                              >
+                                    {project.title}
+                              </h3>
                               <p className="text-lg text-muted-foreground mb-6">{project.fullDescription}</p>
 
                               <div className="mb-6">
@@ -61,17 +72,6 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: any, isOpen: bool
                                           ))}
                                     </ul>
                               </div>
-
-                              {/* <div className="flex gap-4">
-                                    <button className="btn-primary flex items-center gap-2">
-                                          <ExternalLink className="h-5 w-5" />
-                                          Live Demo
-                                    </button>
-                                    <button className="btn-secondary flex items-center gap-2">
-                                          <Github className="h-5 w-5" />
-                                          View Code
-                                    </button>
-                              </div> */}
                         </div>
                   </motion.div>
             </motion.div>
@@ -83,7 +83,7 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: any, index: num
       const isInView = useInView(ref, { once: true, margin: "-50px" });
 
       return (
-            <motion.div
+            <motion.article
                   ref={ref}
                   initial={{ opacity: 0, y: 50 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -91,12 +91,15 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: any, index: num
                   whileHover={{ y: -10 }}
                   className="group bg-gradient-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 cursor-pointer"
                   onClick={() => onOpenModal(project)}
+                  aria-labelledby={`project-title-${project.title.replace(/\s+/g, '-')}`}
             >
                   <div className="relative overflow-hidden">
                         <img
-                              src={project.image}
-                              alt={project.title}
+                              src={project.image.trim()} // Fixed whitespace
+                              alt={`${project.title} - ${project.category} project by TechCorp`}
                               className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                              loading="lazy"
+                              decoding="async"
                         />
                         <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
                               <div className="text-white text-center">
@@ -114,7 +117,10 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: any, index: num
                               <span className="text-sm text-muted-foreground">{project.year}</span>
                         </div>
 
-                        <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                        <h3
+                              id={`project-title-${project.title.replace(/\s+/g, '-')}`}
+                              className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors"
+                        >
                               {project.title}
                         </h3>
                         <p className="text-muted-foreground mb-4">{project.description}</p>
@@ -135,7 +141,7 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: any, index: num
                               )}
                         </div>
                   </div>
-            </motion.div>
+            </motion.article>
       );
 };
 
@@ -146,6 +152,7 @@ const Portfolio = () => {
       const [filter, setFilter] = useState('All');
 
       const projects = [
+            // ... your existing projects array (I'll keep it as is for brevity)
             {
                   title: "E-commerce Platform",
                   description: "Modern e-commerce solution with advanced features and seamless user experience.",
@@ -244,49 +251,103 @@ const Portfolio = () => {
             }
       ];
 
-      const categories = ['All', 'Web Development', 'Mobile App', 'Design'];
+      const categories = ['All', 'Web Development', 'Mobile App', 'Design', 'Web Development With Gen-AI'];
       const filteredProjects = filter === 'All'
             ? projects
             : projects.filter(project => project.category === filter);
 
       return (
-            <section id="portfolio" className="section-padding bg-muted/30">
-                  <div className="container-custom">
+            <section
+                  id="portfolio"
+                  className="section-padding bg-muted/30 relative overflow-hidden"
+                  aria-labelledby="portfolio-heading"
+            >
+                  {/* Subtle background elements */}
+                  <div className="absolute inset-0 pointer-events-none">
+                        <motion.div
+                              animate={{
+                                    scale: [1, 1.3, 1],
+                                    opacity: [0.02, 0.04, 0.02]
+                              }}
+                              transition={{
+                                    duration: 14,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                              }}
+                              className="absolute top-20 left-20 w-56 h-56 bg-primary/10 rounded-full blur-3xl"
+                        />
+                        <motion.div
+                              animate={{
+                                    scale: [1.3, 1, 1.3],
+                                    opacity: [0.03, 0.05, 0.03]
+                              }}
+                              transition={{
+                                    duration: 11,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                              }}
+                              className="absolute bottom-20 right-20 w-72 h-72 bg-secondary/10 rounded-full blur-3xl"
+                        />
+                  </div>
+
+                  <div className="container-custom relative z-10">
                         {/* Header */}
                         <motion.div
                               ref={ref}
                               initial={{ opacity: 0, y: 30 }}
                               animate={isInView ? { opacity: 1, y: 0 } : {}}
                               transition={{ duration: 0.8 }}
-                              className="text-center mb-16"
+                              className="text-center mb-20"
                         >
-                              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                              <motion.div
+                                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full mb-6"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.6, delay: 0.2 }}
+                              >
+                                    <Layers className="w-4 h-4" />
+                                    <span className="text-sm font-medium">Our Work</span>
+                              </motion.div>
+
+                              <h2
+                                    id="portfolio-heading"
+                                    className="text-4xl md:text-6xl font-bold mb-6 text-foreground"
+                              >
                                     Our <span className="text-gradient">Portfolio</span>
                               </h2>
-                              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-                                    Explore our recent projects and see how we've helped businesses
-                                    achieve their digital transformation goals.
-                              </p>
+
+                              <motion.p
+                                    className="text-xl text-muted-foreground max-w-4xl mx-auto mb-10 leading-relaxed"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.4 }}
+                              >
+                                    Explore our recent projects and see how we've helped businesses achieve their
+                                    digital transformation goals with innovative solutions and measurable results.
+                              </motion.p>
 
                               {/* Filter Buttons */}
                               <div className="flex flex-wrap justify-center gap-4">
                                     {categories.map((category) => (
-                                          <button
+                                          <motion.button
                                                 key={category}
                                                 onClick={() => setFilter(category)}
                                                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${filter === category
-                                                      ? 'bg-primary text-primary-foreground shadow-lg'
-                                                      : 'bg-card text-muted-foreground hover:bg-muted hover:text-foreground'
+                                                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+                                                      : 'bg-card text-muted-foreground hover:bg-muted hover:text-foreground border border-border/20'
                                                       }`}
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                aria-pressed={filter === category}
                                           >
                                                 {category}
-                                          </button>
+                                          </motion.button>
                                     ))}
                               </div>
                         </motion.div>
 
                         {/* Projects Grid */}
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                               {filteredProjects.map((project, index) => (
                                     <ProjectCard
                                           key={project.title}
@@ -297,28 +358,71 @@ const Portfolio = () => {
                               ))}
                         </div>
 
-                        {/* CTA */}
+                        {/* 🔥 CRITICAL SEO SECTION - All Project Details Always Visible to Crawlers 🔥 */}
+                        <div className="sr-only" aria-hidden="true">
+                              <h3>Our Complete Portfolio Projects:</h3>
+                              {projects.map((project) => (
+                                    <article
+                                          key={project.title}
+                                          id={`seo-project-${project.title.replace(/\s+/g, '-')}`}
+                                    >
+                                          <h4>{project.title}</h4>
+                                          <p><strong>Category:</strong> {project.category}</p>
+                                          <p><strong>Year:</strong> {project.year}</p>
+                                          <p><strong>Description:</strong> {project.description}</p>
+                                          <p><strong>Full Description:</strong> {project.fullDescription}</p>
+                                          <p><strong>Technologies:</strong> {project.technologies.join(', ')}</p>
+                                          <p><strong>Key Features:</strong></p>
+                                          <ul>
+                                                {project.features.map((feature, idx) => (
+                                                      <li key={idx}>{feature}</li>
+                                                ))}
+                                          </ul>
+                                    </article>
+                              ))}
+                        </div>
+
+                        {/* Enhanced CTA */}
                         <motion.div
                               initial={{ opacity: 0, y: 30 }}
                               animate={isInView ? { opacity: 1, y: 0 } : {}}
-                              transition={{ duration: 0.8, delay: 0.6 }}
-                              className="mt-16 text-center"
+                              transition={{ duration: 0.8, delay: 0.8 }}
+                              className="mt-24 text-center relative"
                         >
-                              <h3 className="text-2xl font-bold text-foreground mb-4">
-                                    Ready to Start Your Project?
-                              </h3>
-                              <p className="text-muted-foreground mb-8">
-                                    Let's discuss your ideas and create something amazing together.
-                              </p>
-                              <button className="btn-primary"
-                                    onClick={() => {
-                                          const element = document.getElementById("contact");
-                                          if (element) {
-                                                element.scrollIntoView({ behavior: "smooth" });
-                                          }
-                                    }}>
-                                    Start Your Project Today
-                              </button>
+                              <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-12 rounded-3xl border border-primary/20 relative overflow-hidden">
+                                    <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+                                    <div className="absolute bottom-4 left-4 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+
+                                    <motion.div
+                                          className="relative z-10"
+                                          whileHover={{ scale: 1.02 }}
+                                          transition={{ type: "spring", stiffness: 300 }}
+                                    >
+                                          <div className="flex justify-center mb-6">
+                                                <Award className="h-12 w-12 text-primary" />
+                                          </div>
+
+                                          <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+                                                Ready to Start Your Project?
+                                          </h3>
+
+                                          <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+                                                Let's discuss your ideas and create something amazing together.
+                                                Our team is ready to bring your vision to life with innovative solutions.
+                                          </p>
+
+                                          <motion.a
+                                                href="#contact"
+                                                className="btn-primary px-8 py-4 text-lg font-medium inline-flex items-center gap-3"
+                                                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(255, 138, 0, 0.4)" }}
+                                                whileTap={{ scale: 0.95 }}
+                                                aria-label="Contact our team"
+                                          >
+                                                Start Your Project Today
+                                                <TrendingUp className="h-5 w-5" />
+                                          </motion.a>
+                                    </motion.div>
+                              </div>
                         </motion.div>
                   </div>
 
