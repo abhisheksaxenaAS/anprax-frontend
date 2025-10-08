@@ -50,7 +50,7 @@ const ClientLogos = () => {
 
           <h2
             id="clients-heading"
-            className="text-4xl md:text-5xl font-bold mb-6 text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text"
           >
             Trusted by <span className="text-gradient">Leading Companies</span>
           </h2>

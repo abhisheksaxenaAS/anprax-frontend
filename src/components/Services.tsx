@@ -349,7 +349,7 @@ const Services = () => {
 
           <h2
             id="services-heading"
-            className="text-4xl md:text-6xl font-bold mb-6 text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl font-bold mb-6 text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text"
           >
             Our <span className="text-gradient">Comprehensive</span> Services
           </h2>
