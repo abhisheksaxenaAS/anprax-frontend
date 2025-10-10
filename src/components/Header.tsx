@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import { FiMenu, } from 'react-icons/fi';
+import { FiX, } from 'react-icons/fi';
+import { FiPhone } from 'react-icons/fi';
+import { FiMail, } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -108,11 +112,11 @@ const Header = () => {
         <div className="container-custom flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center flex-wrap justify-center md:justify-start gap-4">
             <div className="flex items-center space-x-2" itemProp="telephone">
-              <Phone className="h-4 w-4 flex-shrink-0" />
+              <FiPhone className="h-4 w-4 flex-shrink-0" />
               <span>+91-870-945-5238</span>
             </div>
             <div className="flex items-center space-x-2" itemProp="email">
-              <Mail className="h-4 w-4 flex-shrink-0" />
+              <FiMail className="h-4 w-4 flex-shrink-0" />
               <span>sales@anprax.com</span>
             </div>
           </div>
@@ -142,7 +146,7 @@ const Header = () => {
             >
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <img
-                  src="/favicon96.png"
+                  src="/favicon96.webp"
                   alt="AnPrax Logo - Professional IT Services Company in New Delhi"
                   className="w-8 h-8 rounded-sm object-contain"
                 />
@@ -179,7 +183,7 @@ const Header = () => {
                       aria-controls={`dropdown-${item.name}`}
                     >
                       <span>{item.name}</span>
-                      <ChevronDown
+                      <FiChevronDown
                         className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.name ? 'rotate-180' : ''}`}
                       />
                     </motion.button>
@@ -241,9 +245,9 @@ const Header = () => {
               aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-foreground" />
+                <FiX className="h-6 w-6 text-foreground" />
               ) : (
-                <Menu className="h-6 w-6 text-foreground" />
+                <FiMenu className="h-6 w-6 text-foreground" />
               )}
             </button>
           </div>
@@ -274,7 +278,7 @@ const Header = () => {
                       aria-haspopup="true"
                     >
                       {item.name}
-                      <ChevronDown
+                      <FiChevronDown
                         className={`h-4 w-4 transition-transform duration-300 ${openDropdown === item.name ? 'rotate-180' : ''}`}
                       />
                     </button>

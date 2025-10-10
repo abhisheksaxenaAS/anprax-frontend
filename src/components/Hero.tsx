@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
-import heroImage from '@/assets/hero-bg.jpg';
+import { FiArrowRight } from 'react-icons/fi';
+import { FiPlay } from 'react-icons/fi';
+import heroImage from '@/assets/heroImage.webp';
 
 const Hero = () => {
   const handleScrollToServices = () => {
@@ -110,7 +111,7 @@ const Hero = () => {
             aria-label="View our digital marketing and IT services"
           >
             View Our Services
-            <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            <FiArrowRight className="h-5 w-5" aria-hidden="true" />
           </motion.button>
 
           <motion.button
@@ -120,7 +121,7 @@ const Hero = () => {
             className="btn-secondary flex items-center gap-2 text-lg"
             aria-label="Book a consultation call with our team"
           >
-            <Play className="h-5 w-5" aria-hidden="true" />
+            <FiPlay className="h-5 w-5" aria-hidden="true" />
             Book A Call With Us
           </motion.button>
         </motion.div>

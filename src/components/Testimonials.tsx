@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight, Users, Award, Target, Clock } from 'lucide-react';
+import { FiStar } from 'react-icons/fi';
+import { FiChevronLeft } from 'react-icons/fi';
+import { FiChevronRight } from 'react-icons/fi';
+import { FiUsers } from 'react-icons/fi';
+import { FiAward } from 'react-icons/fi';
+import { FiTarget } from 'react-icons/fi';
+import { FiClock } from 'react-icons/fi';
+import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 const TestimonialCard = ({ testimonial, isActive }: { testimonial: any, isActive: boolean }) => {
   return (
@@ -18,16 +25,22 @@ const TestimonialCard = ({ testimonial, isActive }: { testimonial: any, isActive
       aria-labelledby={`testimonial-name-${testimonial.id}`}
     >
       <div className="flex items-center mb-6">
-        <Quote className="h-8 w-8 text-primary mr-4 flex-shrink-0" />
-        <div className="flex gap-1">
+        <FaQuoteLeft className="h-8 w-8 text-primary mr-4 flex-shrink-0" />
+
+        <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
-            <Star
+            <FiStar
               key={i}
               className={`h-5 w-5 ${i < testimonial.rating ? 'fill-primary text-primary' : 'text-muted-foreground/30'}`}
             />
           ))}
+          {/* Add spacing before right quote */}
+          <span className="ml-4">
+            <FaQuoteRight className="h-8 w-8 text-primary flex-shrink-0" />
+          </span>
         </div>
       </div>
+
       <p className="text-lg text-foreground mb-8 leading-relaxed italic">
         "{testimonial.content}"
       </p>
@@ -157,7 +170,7 @@ const Testimonials = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Award className="w-4 h-4" />
+            <FiAward className="w-4 h-4" />
             <span className="text-sm font-medium">Client Success Stories</span>
           </motion.div>
 
@@ -207,7 +220,7 @@ const Testimonials = () => {
             whileTap={{ scale: 0.9 }}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <FiChevronLeft className="h-6 w-6" />
           </motion.button>
 
           <motion.button
@@ -217,7 +230,7 @@ const Testimonials = () => {
             whileTap={{ scale: 0.9 }}
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-6 w-6" />
+            <FiChevronRight className="h-6 w-6" />
           </motion.button>
         </div>
 
@@ -268,7 +281,7 @@ const Testimonials = () => {
             className="text-center group"
           >
             <div className="flex justify-center mb-3">
-              <Users className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+              <FiUsers className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="text-4xl font-bold text-primary mb-2">90</div>
             <div className="text-muted-foreground">Happy Clients</div>
@@ -279,7 +292,7 @@ const Testimonials = () => {
             className="text-center group"
           >
             <div className="flex justify-center mb-3">
-              <Award className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+              <FiAward className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="text-4xl font-bold text-primary mb-2">100%</div>
             <div className="text-muted-foreground">Satisfaction Rate</div>
@@ -290,7 +303,7 @@ const Testimonials = () => {
             className="text-center group"
           >
             <div className="flex justify-center mb-3">
-              <Target className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+              <FiTarget className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="text-4xl font-bold text-primary mb-2">100+</div>
             <div className="text-muted-foreground">Projects Delivered</div>
@@ -301,7 +314,7 @@ const Testimonials = () => {
             className="text-center group"
           >
             <div className="flex justify-center mb-3">
-              <Clock className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+              <FiClock className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="text-4xl font-bold text-primary mb-2">24/7</div>
             <div className="text-muted-foreground">Support Available</div>

@@ -58,7 +58,7 @@ export default {
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
-        'elevated': 'var(--shadow-elevated)', 
+        'elevated': 'var(--shadow-elevated)',
         'glow': 'var(--shadow-glow)',
       },
       animation: {

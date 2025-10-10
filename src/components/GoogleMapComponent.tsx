@@ -1,5 +1,7 @@
 'use client';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap } from '@react-google-maps/api';
+import { LoadScript } from '@react-google-maps/api';
+import { Marker } from '@react-google-maps/api';
 
 const containerStyle = {
     width: '100%',
@@ -8,7 +10,7 @@ const containerStyle = {
 };
 
 const defaultCenter = {
-    lat: 28.6139, // Delhi NSP
+    lat: 28.6139,
     lng: 77.2090,
 };
 

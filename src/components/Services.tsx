@@ -2,26 +2,22 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  Code,
-  Cloud,
-  BarChart3,
-  Palette,
-  CheckCircle,
-  User,
-  ChevronDown,
-  ChevronUp,
-  ArrowRight,
-  Zap,
-  Shield,
-  TrendingUp,
-} from "lucide-react";
-
+import { FiCode, } from "react-icons/fi";
+import { FiCloud, } from "react-icons/fi";
+import { FiBarChart2 } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
+import { FiChevronUp } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
+import { FiZap } from "react-icons/fi";
+import { FiShield } from "react-icons/fi";
+import { FiSliders } from "react-icons/fi";
 export const mainServices = [
   {
     id: "software-development",
     title: "Software Development Services",
-    icon: Code,
+    icon: FiCode,
     subServices: [
       {
         title: "Web Development Services",
@@ -89,7 +85,7 @@ export const mainServices = [
   {
     id: "it-outsourcing",
     title: "IT Outsourcing Services",
-    icon: Cloud,
+    icon: FiCloud,
     subServices: [
       {
         title: "Cloud Solutions",
@@ -120,7 +116,7 @@ export const mainServices = [
   {
     id: "software-consulting",
     title: "Software Consulting Services",
-    icon: BarChart3,
+    icon: FiBarChart2,
     subServices: [
       {
         title: "Software Consulting",
@@ -163,7 +159,7 @@ export const mainServices = [
   {
     id: "creative-branding",
     title: "Creative & Branding Solutions",
-    icon: Palette,
+    icon: FiSliders,
     subServices: [
       {
         title: "Logo Designing Services",
@@ -206,7 +202,7 @@ export const mainServices = [
   {
     id: "erp-crm",
     title: "ERP/CRM Solutions",
-    icon: BarChart3, // you can choose another icon if you want
+    icon: FiShield,
     subServices: [
       {
         title: "Salesforce",
@@ -249,7 +245,7 @@ export const mainServices = [
   {
     id: "rpo-services",
     title: "RPO Services",
-    icon: User,
+    icon: FiUser,
     subServices: [
       {
         title: "Full Recruitment Outsourcing",
@@ -343,7 +339,7 @@ const Services = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Zap className="w-4 h-4" />
+            <FiZap className="w-4 h-4" />
             <span className="text-sm font-medium">Professional Services</span>
           </motion.div>
 
@@ -409,7 +405,7 @@ const Services = () => {
                 </h3>
 
                 <div className="flex justify-center mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ChevronDown className="h-5 w-5 text-primary" />
+                  <FiChevronDown className="h-5 w-5 text-primary" />
                 </div>
 
                 {/* <div className="absolute top-4 right-4 bg-primary/10 text-primary text-xs font-medium px-2 py-1 rounded-full">
@@ -435,7 +431,7 @@ const Services = () => {
               whileHover={{ x: -5 }}
               whileTap={{ scale: 0.95 }}
             >
-              <ChevronUp className="h-5 w-5 group-hover:-rotate-90 transition-transform duration-200" />
+              <FiChevronUp className="h-5 w-5 group-hover:-rotate-90 transition-transform duration-200" />
               Back to All Services
             </motion.button>
 
@@ -477,7 +473,7 @@ const Services = () => {
                     <div className="flex-1">
                       <div className="flex items-start gap-4 mb-6">
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                          <CheckCircle className="h-6 w-6 text-primary" />
+                          <FiCheckCircle className="h-6 w-6 text-primary" />
                         </div>
                         <div>
                           <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
@@ -515,7 +511,7 @@ const Services = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       Get Started
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                      <FiArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </motion.button>
                   </motion.article>
                 ))}

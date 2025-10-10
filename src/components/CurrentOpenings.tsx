@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Code, Server, Coffee, Zap, ExternalLink } from "lucide-react";
+import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
+import { FiCode } from "react-icons/fi";
+import { FiServer } from "react-icons/fi";
+import { FiCoffee } from "react-icons/fi";
+import { FiZap } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 
 interface ServiceCardProps {
     id: string;
@@ -103,7 +109,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                         transition={{ duration: 0.4, delay: 0.6 }}
                     >
                         <div className="flex items-center gap-2 text-primary font-medium">
-                            <Zap className="w-4 h-4" />
+                            <FiZap className="w-4 h-4" />
                             <span>Currently Hiring • Apply Today</span>
                         </div>
                     </motion.div>
@@ -123,7 +129,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
                         aria-label={`Apply for ${title} position via Google Form`}
                     >
                         Apply Now
-                        <ExternalLink className="w-4 h-4" />
+                        <FiExternalLink className="w-4 h-4" />
                     </motion.button>
                 </motion.div>
             </div>
@@ -141,7 +147,7 @@ const CurrentOpenings: React.FC = () => {
             title: "Frontend Developer",
             description:
                 "Build responsive and interactive user interfaces using React, TypeScript, and modern CSS frameworks with a focus on performance and user experience.",
-            icon: <Code className="w-8 h-8 text-primary" />,
+            icon: <FiCode className="w-8 h-8 text-primary" />,
             googleFormUrl: GOOGLE_FORM_URL,
         },
         {
@@ -149,7 +155,7 @@ const CurrentOpenings: React.FC = () => {
             title: "Backend Developer",
             description:
                 "Develop scalable server-side applications and RESTful APIs using Node.js, Python, or Java with emphasis on security, efficiency, and maintainability.",
-            icon: <Server className="w-8 h-8 text-primary" />,
+            icon: <FiServer className="w-8 h-8 text-primary" />,
             googleFormUrl: GOOGLE_FORM_URL,
         },
         {
@@ -157,7 +163,7 @@ const CurrentOpenings: React.FC = () => {
             title: "Java Developer",
             description:
                 "Create enterprise-grade applications using Java, Spring Boot, and microservices architecture focusing on performance, scalability, and clean code practices.",
-            icon: <Coffee className="w-8 h-8 text-primary" />,
+            icon: <FiCoffee className="w-8 h-8 text-primary" />,
             googleFormUrl: GOOGLE_FORM_URL,
         },
         {
@@ -165,7 +171,7 @@ const CurrentOpenings: React.FC = () => {
             title: "Full Stack Developer",
             description:
                 "Deliver end-to-end web applications by working across frontend and backend technologies with seamless integration and comprehensive testing strategies.",
-            icon: <Zap className="w-8 h-8 text-primary" />,
+            icon: <FiZap className="w-8 h-8 text-primary" />,
             googleFormUrl: GOOGLE_FORM_URL,
         },
     ];
@@ -205,7 +211,7 @@ const CurrentOpenings: React.FC = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <Zap className="w-4 h-4" />
+                        <FiZap className="w-4 h-4" />
                         <span className="text-sm font-medium">We're Hiring</span>
                     </motion.div>
 
@@ -274,7 +280,7 @@ const CurrentOpenings: React.FC = () => {
                         whileTap={{ scale: 0.9 }}
                         aria-label="Previous job opening"
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <FiChevronLeft className="w-6 h-6" />
                     </motion.button>
 
                     <motion.button
@@ -284,7 +290,7 @@ const CurrentOpenings: React.FC = () => {
                         whileTap={{ scale: 0.9 }}
                         aria-label="Next job opening"
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <FiChevronRight className="w-6 h-6" />
                     </motion.button>
                 </div>
 

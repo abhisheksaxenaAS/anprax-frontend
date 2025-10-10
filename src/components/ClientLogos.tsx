@@ -1,20 +1,19 @@
 "use client";
-
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users } from "lucide-react";
+import { FiUsers } from 'react-icons/fi';
 
 const ClientLogos = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const clients = [
-    { name: "TechStart Inc.", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=100&fit=crop" },
-    { name: "InnovateLab", logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop" },
-    { name: "Global Retail Co.", logo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=100&fit=crop" },
-    { name: "EcoSolutions", logo: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=100&fit=crop" },
-    { name: "HealthCare Plus", logo: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&h=100&fit=crop" },
-    { name: "Finance Pro", logo: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=100&fit=crop" },
+    { name: "TechStart Inc.", logo: "/clients/techStart.webp" },
+    { name: "InnovateLab", logo: "/clients/innovateLab.webp" },
+    { name: "Global Retail Co.", logo: "/clients/globalRetail.webp" },
+    { name: "EcoSolutions", logo: "/clients/ecoSolutions.webp" },
+    { name: "HealthCare Plus", logo: "/clients/healthcarePlus.webp" },
+    { name: "Finance Pro", logo: "/clients/financePro.webp" },
   ];
 
   return (
@@ -44,7 +43,7 @@ const ClientLogos = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Users className="w-4 h-4" />
+            <FiUsers className="w-4 h-4" />
             <span className="text-sm font-medium">Trusted Partners</span>
           </motion.div>
 
@@ -61,7 +60,7 @@ const ClientLogos = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Join 500+ satisfied clients who have transformed their businesses with our solutions.
+            Join 90+ satisfied clients who have transformed their businesses with our solutions.
           </motion.p>
         </motion.div>
 

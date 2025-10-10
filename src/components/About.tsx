@@ -1,6 +1,10 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Users, Award, Target, Infinity as InfinityIcon, TrendingUp, Layers } from 'lucide-react';
+import { FiUsers } from 'react-icons/fi';
+import { FiAward } from 'react-icons/fi';
+import { FiTarget } from 'react-icons/fi';
+import { FiLayers } from 'react-icons/fi';
+import { FaInfinity } from 'react-icons/fa';
 
 const CounterCard = ({ icon: Icon, number, label }: {
   icon: any;
@@ -84,10 +88,10 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats = [
-    { icon: Users, number: 90, label: "Happy Clients" },
-    { icon: Award, number: 100, label: "Projects Completed" },
-    { icon: InfinityIcon, number: "∞", label: "Happy Moments" },
-    { icon: Target, number: 99, label: "Success Rate" },
+    { icon: FiUsers, number: 90, label: "Happy Clients" },
+    { icon: FiAward, number: 100, label: "Projects Completed" },
+    { icon: FaInfinity, number: "∞", label: "Happy Moments" },
+    { icon: FiTarget, number: 99, label: "Success Rate" },
   ];
 
   return (
@@ -139,7 +143,7 @@ const About = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Layers className="w-4 h-4" />
+            <FiLayers className="w-4 h-4" />
             <span className="text-sm font-medium">Our Story</span>
           </motion.div>
 
@@ -221,7 +225,7 @@ const About = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="flex justify-center mb-6">
-                <Award className="h-12 w-12 text-primary" />
+                <FiAward className="h-12 w-12 text-primary" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">

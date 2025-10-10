@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ExternalLink, Github, X, Layers, Award, TrendingUp } from 'lucide-react';
+import { FiExternalLink } from 'react-icons/fi';
+import { FiLayers } from 'react-icons/fi';
+import { FiAward } from 'react-icons/fi';
+import { FiTrendingUp } from 'react-icons/fi';
+import { FaGithub } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
 
 const ProjectModal = ({ project, isOpen, onClose }: { project: any, isOpen: boolean, onClose: () => void }) => {
       if (!isOpen) return null;
@@ -37,7 +43,7 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: any, isOpen: bool
                                     className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
                                     aria-label="Close project details"
                               >
-                                    <X className="h-6 w-6" />
+                                    <FaXTwitter className="h-6 w-6" />
                               </button>
                         </div>
 
@@ -103,7 +109,7 @@ const ProjectCard = ({ project, index, onOpenModal }: { project: any, index: num
                         />
                         <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
                               <div className="text-white text-center">
-                                    <ExternalLink className="h-8 w-8 mx-auto mb-2" />
+                                    <FiExternalLink className="h-8 w-8 mx-auto mb-2" />
                                     <span className="font-semibold">View Project</span>
                               </div>
                         </div>
@@ -152,14 +158,13 @@ const Portfolio = () => {
       const [filter, setFilter] = useState('All');
 
       const projects = [
-            // ... your existing projects array (I'll keep it as is for brevity)
             {
                   title: "E-commerce Platform",
                   description: "Modern e-commerce solution with advanced features and seamless user experience.",
                   fullDescription: "A comprehensive e-commerce platform built for a fashion retailer, featuring advanced product filtering, real-time inventory management, secure payment processing, and an intuitive admin dashboard. The platform handles thousands of transactions daily and has increased client sales by 150%.",
                   category: "Web Development",
                   year: "2024",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+                  image: "/portfolio/e-commerce.webp",
                   technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS"],
                   features: [
                         "Real-time inventory management",
@@ -175,7 +180,7 @@ const Portfolio = () => {
                   fullDescription: "A cutting-edge mobile banking application that provides users with secure access to their accounts, real-time transaction monitoring, bill payment capabilities, and investment tracking. Features advanced security measures including biometric authentication and end-to-end encryption.",
                   category: "Mobile App",
                   year: "2024",
-                  image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+                  image: "/portfolio/mobileBanking.webp",
                   technologies: ["React Native", "TypeScript", "Firebase", "Biometrics"],
                   features: [
                         "Biometric authentication (Face ID/Touch ID)",
@@ -191,7 +196,7 @@ const Portfolio = () => {
                   fullDescription: "A next-generation analytics dashboard that leverages machine learning to deliver real-time business insights, predictive trend forecasting, and automated reporting. Built for enterprise clients in the retail and logistics sectors, it processes millions of data points daily and has reduced decision-making time by 65% while improving forecast accuracy by 40%.",
                   category: "Web Development With Gen-AI",
                   year: "2024",
-                  image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+                  image: "/portfolio/aiPowered.webp",
                   technologies: ["React", "TypeScript", "Python", "TensorFlow.js", "PostgreSQL", "Redis"],
                   features: [
                         "Real-time data visualization with interactive charts",
@@ -207,7 +212,7 @@ const Portfolio = () => {
                   fullDescription: "A comprehensive brand identity project for an AI startup, including logo design, brand guidelines, website design, marketing materials, and social media assets. The project helped establish a strong brand presence and contributed to successful Series A funding.",
                   category: "Design",
                   year: "2024",
-                  image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+                  image: "/portfolio/brandIdentity.webp",
                   technologies: ["Adobe Creative Suite", "Figma", "Sketch"],
                   features: [
                         "Logo and brand identity design",
@@ -223,7 +228,7 @@ const Portfolio = () => {
                   fullDescription: "A sophisticated real estate platform that connects buyers, sellers, and agents. Features include advanced property search, virtual property tours, mortgage calculators, market analytics, and a comprehensive CRM system for real estate professionals.",
                   category: "Web Development",
                   year: "2023",
-                  image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+                  image: "/portfolio/realEstate.webp",
                   technologies: ["Angular", "Node.js", "MySQL", "Google Maps API"],
                   features: [
                         "Advanced property search and filtering",
@@ -239,7 +244,7 @@ const Portfolio = () => {
                   fullDescription: "A comprehensive learning management system designed for educational institutions and corporate training. Features include course creation tools, video streaming, interactive assessments, progress tracking, and certification management.",
                   category: "Web Development",
                   year: "2023",
-                  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
+                  image: "/portfolio/leaningManagement.webp",
                   technologies: ["React", "Express.js", "MongoDB", "WebRTC"],
                   features: [
                         "Course creation and management tools",
@@ -305,7 +310,7 @@ const Portfolio = () => {
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.6, delay: 0.2 }}
                               >
-                                    <Layers className="w-4 h-4" />
+                                    <FiLayers className="w-4 h-4" />
                                     <span className="text-sm font-medium">Our Work</span>
                               </motion.div>
 
@@ -399,7 +404,7 @@ const Portfolio = () => {
                                           transition={{ type: "spring", stiffness: 300 }}
                                     >
                                           <div className="flex justify-center mb-6">
-                                                <Award className="h-12 w-12 text-primary" />
+                                                <FiAward className="h-12 w-12 text-primary" />
                                           </div>
 
                                           <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
@@ -419,7 +424,7 @@ const Portfolio = () => {
                                                 aria-label="Contact our team"
                                           >
                                                 Start Your Project Today
-                                                <TrendingUp className="h-5 w-5" />
+                                                <FiTrendingUp className="h-5 w-5" />
                                           </motion.a>
                                     </motion.div>
                               </div>

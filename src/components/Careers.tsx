@@ -1,6 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Calendar, MapPin, Users, Award, TrendingUp } from "lucide-react";
+import { FiBriefcase } from "react-icons/fi";
+import { FiCalendar } from "react-icons/fi";
+import { FiMapPin } from "react-icons/fi";
+import { FiUsers } from "react-icons/fi";
+import { FiAward } from "react-icons/fi";
+import { FiTrendingUp } from "react-icons/fi";
+
 
 interface Job {
     id: string; // Added unique ID
@@ -39,15 +45,15 @@ const JobCard = ({ job, index }: { job: Job; index: number }) => {
                 )}
                 <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
                     <span className="flex items-center gap-1">
-                        <MapPin className="h-4 w-4 flex-shrink-0" />
+                        <FiMapPin className="h-4 w-4 flex-shrink-0" />
                         {job.location}
                     </span>
                     <span className="flex items-center gap-1">
-                        <Briefcase className="h-4 w-4 flex-shrink-0" />
+                        <FiBriefcase className="h-4 w-4 flex-shrink-0" />
                         {job.type}
                     </span>
                     <span className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4 flex-shrink-0" />
+                        <FiCalendar className="h-4 w-4 flex-shrink-0" />
                         {job.posted}
                     </span>
                 </div>
@@ -190,7 +196,7 @@ const Careers = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <Users className="w-4 h-4" />
+                        <FiUsers className="w-4 h-4" />
                         <span className="text-sm font-medium">Join Our Team</span>
                     </motion.div>
 
@@ -266,7 +272,7 @@ const Careers = () => {
                             transition={{ type: "spring", stiffness: 300 }}
                         >
                             <div className="flex justify-center mb-6">
-                                <Award className="h-12 w-12 text-primary" />
+                                <FiAward className="h-12 w-12 text-primary" />
                             </div>
 
                             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
@@ -287,7 +293,7 @@ const Careers = () => {
                                 aria-label="Contact our team"
                             >
                                 Get in Touch
-                                <TrendingUp className="h-5 w-5" />
+                                <FiTrendingUp className="h-5 w-5" />
                             </motion.a>
                         </motion.div>
                     </div>

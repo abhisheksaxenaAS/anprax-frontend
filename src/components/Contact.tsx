@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, Users, Award } from 'lucide-react';
+import { FiMapPin } from 'react-icons/fi';
+import { FiPhone } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
+import { FiClock } from 'react-icons/fi';
+import { FiSend } from 'react-icons/fi';
+import { FiCheckCircle } from 'react-icons/fi';
+import { FiUsers } from 'react-icons/fi';
 import axios from 'axios';
 
 const Contact = () => {
@@ -92,25 +98,25 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: MapPin,
+      icon: FiMapPin,
       title: "Visit Our Office",
       details: ["802-803, 8th Floor", "Pearl Best Heights-I", "Netaji Subhash Place", "New Delhi - 110034"],
       schemaType: "address"
     },
     {
-      icon: Phone,
+      icon: FiPhone,
       title: "Call Us",
       details: ["+91-870-945-5238"],
       schemaType: "telephone"
     },
     {
-      icon: Mail,
+      icon: FiMail,
       title: "Email Us",
       details: ["sales@anprax.com"],
       schemaType: "email"
     },
     {
-      icon: Clock,
+      icon: FiClock,
       title: "Working Hours",
       details: ["Monday - Friday: 9AM - 6PM", "Saturday: Closed", "Sunday: Closed"],
       schemaType: "openingHours"
@@ -215,7 +221,7 @@ const Contact = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Users className="w-4 h-4" />
+            <FiUsers className="w-4 h-4" />
             <span className="text-sm font-medium">Get In Touch</span>
           </motion.div>
 
@@ -301,7 +307,7 @@ const Contact = () => {
                 className="btn-primary bg-white text-secondary hover:bg-gray-100 inline-flex items-center gap-2"
                 aria-label="Call us now at +91-870-945-5238"
               >
-                <Phone className="h-4 w-4" />
+                <FiPhone className="h-4 w-4" />
                 Call Now: +91-870-945-5238
               </a>
             </motion.div>
@@ -324,7 +330,7 @@ const Contact = () => {
                 role="alert"
                 aria-live="polite"
               >
-                <CheckCircle className="h-16 w-16 text-success mx-auto mb-6" />
+                <FiCheckCircle className="h-16 w-16 text-success mx-auto mb-6" />
                 <h3 className="text-2xl font-bold text-foreground mb-4">
                   Thank You!
                 </h3>
@@ -477,7 +483,7 @@ const Contact = () => {
                       </>
                     ) : (
                       <>
-                        <Send className="h-5 w-5" />
+                        <FiSend className="h-5 w-5" />
                         Send Message
                       </>
                     )}

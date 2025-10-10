@@ -1,6 +1,11 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { User, Star, Phone, Mail, Award, Users, TrendingUp } from 'lucide-react';
+import { FiLinkedin } from 'react-icons/fi';
+import { FiPhone } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
+import { FiAward } from 'react-icons/fi';
+import { FiUsers } from 'react-icons/fi';
+import { FiTrendingUp } from 'react-icons/fi';
 
 const TeamCard = ({ member, index }: { member: any, index: number }) => {
     const ref = useRef(null);
@@ -27,7 +32,7 @@ const TeamCard = ({ member, index }: { member: any, index: number }) => {
             <div className="flex justify-center mb-6">
                 <img
                     src={getProfileImage(member.image)}
-                    alt={`${member.name}, ${member.role} at TechCorp`}
+                    alt={`${member.name}, ${member.role} at AnPrax`}
                     className="h-24 w-24 rounded-full object-cover border-4 border-gradient-primary shadow-md"
                     loading="lazy"
                     decoding="async"
@@ -53,7 +58,7 @@ const TeamCard = ({ member, index }: { member: any, index: number }) => {
                             className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
                             aria-label={`Email ${member.name}`}
                         >
-                            <Mail className="h-5 w-5" />
+                            <FiMail className="h-5 w-5" />
                         </a>
                     )}
                     {member.contact.phone && (
@@ -62,7 +67,7 @@ const TeamCard = ({ member, index }: { member: any, index: number }) => {
                             className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
                             aria-label={`Call ${member.name}`}
                         >
-                            <Phone className="h-5 w-5" />
+                            <FiPhone className="h-5 w-5" />
                         </a>
                     )}
                     {member.contact.linkedin && (
@@ -73,7 +78,7 @@ const TeamCard = ({ member, index }: { member: any, index: number }) => {
                             className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-primary/10"
                             aria-label={`${member.name} on LinkedIn`}
                         >
-                            <Star className="h-5 w-5" />
+                            <FiLinkedin className="h-5 w-5" />
                         </a>
                     )}
                 </div>
@@ -174,7 +179,7 @@ const Team = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <Users className="w-4 h-4" />
+                        <FiUsers className="w-4 h-4" />
                         <span className="text-sm font-medium">Leadership Team</span>
                     </motion.div>
 
@@ -235,7 +240,7 @@ const Team = () => {
                             transition={{ type: "spring", stiffness: 300 }}
                         >
                             <div className="flex justify-center mb-6">
-                                <Award className="h-12 w-12 text-primary" />
+                                <FiAward className="h-12 w-12 text-primary" />
                             </div>
 
                             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
@@ -254,7 +259,7 @@ const Team = () => {
                                 aria-label="Contact our team"
                             >
                                 Get in Touch
-                                <TrendingUp className="h-5 w-5" />
+                                <FiTrendingUp className="h-5 w-5" />
                             </motion.a>
                         </motion.div>
                     </div>

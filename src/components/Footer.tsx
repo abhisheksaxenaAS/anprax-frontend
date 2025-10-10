@@ -1,15 +1,13 @@
 import { motion } from 'framer-motion';
-import {
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Youtube,
-  Mail,
-  Phone,
-  MapPin,
-  ArrowUp
-} from 'lucide-react';
+import { FaFacebookF } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
+import { FaYoutube } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaPhone } from 'react-icons/fa';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaArrowUp } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -43,11 +41,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '', label: 'Facebook' },
-    { icon: Twitter, href: '', label: 'Twitter' },
-    { icon: Linkedin, href: '', label: 'LinkedIn' },
-    { icon: Instagram, href: '', label: 'Instagram' },
-    { icon: Youtube, href: '', label: 'YouTube' }, // Fixed whitespace
+    { icon: FaFacebookF, href: '', label: 'Facebook' },
+    { icon: FaXTwitter, href: '', label: 'Twitter' },
+    { icon: FaLinkedinIn, href: '', label: 'LinkedIn' },
+    { icon: FaInstagram, href: '', label: 'Instagram' },
+    { icon: FaYoutube, href: '', label: 'YouTube' }, // Fixed whitespace
   ];
 
   // 🔥 Organization Schema Markup
@@ -146,25 +144,38 @@ const Footer = () => {
                   thrive in the digital world with innovative solutions and cutting-edge technology.
                 </p>
 
-                <div className="space-y-3" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-primary" />
-                    <span className="text-gray-300" itemProp="telephone">+91-870-945-5238</span>
+                <div
+                  className="space-y-4 text-gray-300"
+                  itemProp="address"
+                  itemScope
+                  itemType="https://schema.org/PostalAddress"
+                >
+                  {/* Phone */}
+                  <div className="flex items-start gap-3">
+                    <FaPhone className="h-5 w-5 text-primary mt-0.5" />
+                    <p className="leading-snug" itemProp="telephone">
+                      +91-870-945-5238
+                    </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-primary" />
-                    <span className="text-gray-300" itemProp="email">sales@anprax.com</span>
+
+                  {/* Email */}
+                  <div className="flex items-start gap-3">
+                    <FaEnvelope className="h-5 w-5 text-primary mt-0.5" />
+                    <p className="leading-snug" itemProp="email">
+                      sales@anprax.com
+                    </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-primary" />
-                    <span
-                      className="text-gray-300"
-                      itemProp="streetAddress"
-                    >
-                      802-803, 8th Floor, Pearl Best Heights-I, Netaji Subhash Place, New Delhi - 110034
-                    </span>
+
+                  {/* Address */}
+                  <div className="flex items-start gap-3">
+                    <FaMapMarkerAlt className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                    <p className="leading-snug" itemProp="streetAddress">
+                      802-803, 8th Floor, Pearl Best Heights-I,<br />
+                      Netaji Subhash Place, New Delhi - 110034
+                    </p>
                   </div>
                 </div>
+
               </motion.div>
             </div>
 
@@ -244,7 +255,7 @@ const Footer = () => {
                     className="px-6 py-3 bg-gradient-primary rounded-r-lg hover:opacity-90 transition-opacity"
                     aria-label="Subscribe to newsletter"
                   >
-                    <Mail className="h-5 w-5" />
+                    <FaEnvelope className="h-5 w-5" />
                   </button>
                 </form>
 
@@ -327,7 +338,7 @@ const Footer = () => {
                 className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center hover:shadow-glow transition-all duration-300"
                 aria-label="Scroll to top"
               >
-                <ArrowUp className="h-6 w-6" />
+                <FaArrowUp className="h-6 w-6" />
               </motion.button>
             </div>
           </div>
